@@ -115,5 +115,5 @@ pac auth create    # Power Platform (Track 2 only)
 
 ## Support
 
-Personal tool maintained by **Vinay Sampatn** for Global Skilling / AI Task Force.
+Personal tool maintained by **Vinay Nalam**
 Not an official Microsoft release. Issues or suggestions: [open an issue](https://github.com/sampatn/GC-devtools-installer/issues).
