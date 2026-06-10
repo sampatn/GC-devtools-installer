@@ -113,18 +113,7 @@ pac auth create    # Power Platform (Track 2 only)
 
 ---
 
-## Distribution
-
-This tool is published in two places:
-
-| Repo | Visibility | Purpose |
-|------|-----------|---------|
-| [`sampatn/GC-devtools-installer`](https://github.com/sampatn/GC-devtools-installer) | **Public** | Public mirror — the one-liner above pulls from here |
-| `sampatn_microsoft/QuickInstall` | Private (Microsoft EMU) | Internal source of truth |
-
-The public mirror exists because Microsoft EMU policy forbids public repos on `*_microsoft` accounts. Both repos are kept in sync. This is a personally maintained tool — not an official Microsoft release.
-
 ## Support
 
-Internal Microsoft tool — for Global Skilling / AI Task Force.
-Issues or suggestions: open an issue in the [public repo](https://github.com/sampatn/GC-devtools-installer/issues), or contact **Vinay Sampatn**.
+Personal tool maintained by **Vinay Sampatn** for Global Skilling / AI Task Force.
+Not an official Microsoft release. Issues or suggestions: [open an issue](https://github.com/sampatn/GC-devtools-installer/issues).
