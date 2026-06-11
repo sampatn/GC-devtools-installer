@@ -149,6 +149,16 @@ try {
     $clipboardSet = $false
 }
 
+# Always save the prompt to a known local path as a clipboard-loss fallback.
+# (Clipboards get clobbered by GitHub /login auth-code copy, terminal restart, etc.)
+$promptFile = Join-Path $env:USERPROFILE "copilot-setup-prompt.md"
+try {
+    Set-Content -Path $promptFile -Value $copilotPrompt -Encoding UTF8 -ErrorAction Stop
+    $promptFileSaved = $true
+} catch {
+    $promptFileSaved = $false
+}
+
 # --- Step 4: Print next steps ---
 Write-Host ""
 Write-Banner "Next Steps"
@@ -156,7 +166,7 @@ Write-Banner "Next Steps"
 Write-Host "  1. CLOSE this terminal and open a NEW one" -ForegroundColor White
 Write-Host "     (Required for PATH to update)" -ForegroundColor Gray
 Write-Host ""
-Write-Host "  2. Start a Copilot CLI session:" -ForegroundColor White
+Write-Host "  2. Start a Copilot CLI session (lowercase matters):" -ForegroundColor White
 Write-Host ""
 Write-Host "     agency copilot" -ForegroundColor Green
 Write-Host ""
@@ -170,11 +180,21 @@ Write-Host "  4. Paste the setup prompt to have Copilot install your tools:" -Fo
 
 if ($clipboardSet) {
     Write-Host ""
-    Write-Host "     ✓ Prompt has been copied to your clipboard — just Ctrl+V!" -ForegroundColor Green
+    Write-Host "     ✓ Prompt is on your clipboard — Ctrl+V into the Copilot session." -ForegroundColor Green
+}
+
+if ($promptFileSaved) {
+    Write-Host ""
+    Write-Host "     If the clipboard was lost (e.g., after copying the GitHub auth code)," -ForegroundColor Gray
+    Write-Host "     the prompt is also saved here:" -ForegroundColor Gray
+    Write-Host "     $promptFile" -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "     Reload it onto the clipboard any time with:" -ForegroundColor Gray
+    Write-Host "     Get-Content `"$promptFile`" -Raw | Set-Clipboard" -ForegroundColor Yellow
 } else {
     Write-Host ""
-    Write-Host "     The prompt is saved in:" -ForegroundColor Gray
-    Write-Host "     $PSScriptRoot\copilot-setup-prompt.md" -ForegroundColor Gray
+    Write-Host "     Fallback: grab the prompt from GitHub:" -ForegroundColor Gray
+    Write-Host "     https://github.com/sampatn/GC-devtools-installer/blob/main/copilot-setup-prompt.md" -ForegroundColor Yellow
 }
 
 Write-Host ""

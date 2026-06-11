@@ -28,11 +28,16 @@ Open a **new terminal** and start a Copilot CLI session:
 agency copilot
 ```
 
-Then paste this prompt (it was copied to your clipboard by Step 1):
+> ⚠️ Lowercase matters — `agency copilot`, not `Agency Copilot`.
 
-> *"Install my agent dev tools. I want tracks 1, 2, and 3."*
+Then **paste the setup prompt** (`Ctrl+V`) — Step 1 copied it to your clipboard.
 
-Or just say which tracks you need:
+**Lost the clipboard?** (Common — copying the GitHub auth code overwrites it.) Recover it from either:
+- **Local file:** `%USERPROFILE%\copilot-setup-prompt.md` (saved automatically by Step 1)
+  - Reload onto clipboard: `Get-Content "$env:USERPROFILE\copilot-setup-prompt.md" -Raw | Set-Clipboard`
+- **GitHub:** [`copilot-setup-prompt.md`](https://github.com/sampatn/GC-devtools-installer/blob/main/copilot-setup-prompt.md) — copy the contents and paste
+
+Once the prompt is in, just tell Copilot which tracks you need:
 - **Track 1** — Azure AI Foundry (code-first agents)
 - **Track 2** — Power Platform / Copilot Studio (low-code)
 - **Track 3** — Teams / M365 Copilot (ATK)
@@ -115,5 +120,5 @@ pac auth create    # Power Platform (Track 2 only)
 
 ## Support
 
-Personal tool maintained by **Vinay Nalam**
+Personal tool maintained by **Vinay Sampatn** for Global Skilling / AI Task Force.
 Not an official Microsoft release. Issues or suggestions: [open an issue](https://github.com/sampatn/GC-devtools-installer/issues).
